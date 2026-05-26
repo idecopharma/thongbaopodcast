@@ -151,8 +151,8 @@
         <input type="text" id="nameInput" placeholder="VD: Chia sẻ công việc tuần 21" />
       </div>
       <div>
-        <label>Link Vocaroo</label>
-        <input type="text" id="linkInput" placeholder="https://vocaroo.com/embed/17VhqWTIOde" />
+        <label>Link hoặc Embed HTML Vocaroo</label>
+        <input type="text" id="linkInput" placeholder="Dán link hoặc toàn bộ đoạn HTML embed từ Vocaroo" />
       </div>
     </div>
     <button class="btn btn-gold" id="addBtn">
@@ -208,8 +208,16 @@ const esc = (s)=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 function parseVocarooId(raw){
   if(!raw) return null;
   const s = String(raw).trim();
-  const pats = [/vocaroo\.com\/embed\/([A-Za-z0-9]+)/i, /voca\.ro\/([A-Za-z0-9]+)/i, /vocaroo\.com\/([A-Za-z0-9]+)/i];
-  for(const p of pats){ const m=s.match(p); if(m&&m[1]) return m[1]; }
+  // Hỗ trợ đoạn HTML embed đầy đủ: src="https://vocaroo.com/embed/ID?autoplay=0"
+  const embedSrc = s.match(/vocaroo\.com\/embed\/([A-Za-z0-9]+)/i);
+  if(embedSrc && embedSrc[1]) return embedSrc[1];
+  // Hỗ trợ link voca.ro/ID hoặc href="https://voca.ro/ID"
+  const vocaRo = s.match(/voca\.ro\/([A-Za-z0-9]+)/i);
+  if(vocaRo && vocaRo[1]) return vocaRo[1];
+  // Hỗ trợ link thường vocaroo.com/ID
+  const plain = s.match(/vocaroo\.com\/([A-Za-z0-9]+)/i);
+  if(plain && plain[1]) return plain[1];
+  // Nếu chỉ nhập thẳng ID
   if(/^[A-Za-z0-9]{6,}$/.test(s)) return s;
   return null;
 }
@@ -290,9 +298,14 @@ function render(){
         <div class="u">vocaroo.com/embed/${esc(p.embedId)}</div>
       </div>
       <div class="item-actions">
-        <button class="btn btn-play icon-btn" data-act="play" title="Phát sóng">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
+        ${p.key===liveKey
+          ? `<button class="btn btn-stopcast icon-btn" data-act="stop" title="Dừng phát sóng">
+               <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+             </button>`
+          : `<button class="btn btn-play icon-btn" data-act="play" title="Phát sóng">
+               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+             </button>`
+        }
         <button class="btn btn-del icon-btn" data-act="del" title="Xóa">
           <svg viewBox="0 0 24 24"><path d="M6 7h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm3-4h6l1 2h4v2H4V5h4z"/></svg>
         </button>
@@ -312,6 +325,11 @@ $("list").addEventListener("click", async (e)=>{
   const li = e.target.closest("li"); const key = li.dataset.key;
   const p = items.find(x=>x.key===key); if(!p) return;
   if(btn.dataset.act==="play"){ broadcast(p, key); }
+  else if(btn.dataset.act==="stop"){
+    try{ await set(ref(db,"broadcast"), { active:false, startedAt: Date.now() });
+      toast("Đã dừng phát sóng."); }
+    catch(e){ toast("Lỗi: "+e.message, true); }
+  }
   else if(btn.dataset.act==="del"){
     if(!confirm(`Xóa podcast "${p.name}"?`)) return;
     try{ await remove(ref(db,"podcasts/"+key)); toast("Đã xóa."); }
