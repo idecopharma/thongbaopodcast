@@ -71,16 +71,18 @@
   .btn-play:hover{background:rgba(96,205,255,.24)}
   .btn-del{background:rgba(255,90,82,.12);color:#ffd0cd;fill:#ff8a84;border:1px solid rgba(255,90,82,.35)}
   .btn-del:hover{background:rgba(255,90,82,.22)}
-  .btn-stopcast{background:rgba(255,90,82,.14);color:#ffd0cd;fill:#ff8a84;border:1px solid rgba(255,90,82,.4)}
 
-  /* Trạng thái phát sóng */
+  /* Trạng thái popup gần nhất */
   .broadcast{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .live-dot{width:11px;height:11px;border-radius:50%;background:#3a5a60;flex:0 0 auto}
-  .live .live-dot{background:var(--red);box-shadow:0 0 0 0 rgba(255,90,82,.7);animation:ping 1.6s infinite}
-  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,90,82,.6)}70%{box-shadow:0 0 0 10px rgba(255,90,82,0)}100%{box-shadow:0 0 0 0 rgba(255,90,82,0)}}
+  .bell{width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+    background:rgba(96,205,255,.12);border:1px solid rgba(96,205,255,.3);
+    display:flex;align-items:center;justify-content:center}
+  .bell svg{width:20px;height:20px;fill:var(--teal)}
   .broadcast .info{flex:1;min-width:160px}
   .broadcast .info .st{font-size:13px;font-weight:700}
-  .broadcast .info .nm{font-size:12px;color:var(--muted);margin-top:2px}
+  .broadcast .info .nm{font-size:12px;color:var(--muted);margin-top:3px}
+  .broadcast.sent .bell{background:rgba(245,197,107,.14);border-color:var(--line)}
+  .broadcast.sent .bell svg{fill:var(--gold)}
 
   /* Danh sách */
   .count{font-size:12px;color:var(--muted);font-weight:600}
@@ -91,7 +93,6 @@
     border-radius:13px;padding:12px 14px;transition:border .15s;
   }
   ul.list li:hover{border-color:var(--line)}
-  ul.list li.active{border-color:var(--red);background:rgba(255,90,82,.06)}
   .idx{width:26px;height:26px;border-radius:8px;background:rgba(245,197,107,.12);
     color:var(--gold);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   .meta{flex:1;min-width:0}
@@ -99,8 +100,6 @@
   .meta .u{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
   .item-actions{display:flex;gap:8px;flex:0 0 auto}
   .icon-btn{width:38px;height:38px;border-radius:10px;padding:0}
-  .badge-live{font-size:10px;font-weight:800;letter-spacing:1px;color:var(--red);
-    border:1px solid rgba(255,90,82,.4);padding:3px 8px;border-radius:999px}
 
   .empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:13.5px}
   .toast{
@@ -123,22 +122,21 @@
     </div>
     <div>
       <h1>Quản trị Podcast Thông Báo</h1>
-      <p>Tải link Vocaroo · tạo danh sách · phát sóng tới mọi máy theo thời gian thực</p>
+      <p>Tải link Vocaroo · tạo danh sách · gửi popup tới mọi máy theo thời gian thực</p>
     </div>
   </header>
 
-  <!-- TRẠNG THÁI PHÁT SÓNG -->
+  <!-- POPUP GẦN NHẤT -->
   <div class="card" id="castCard">
-    <h2><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg> Trạng thái phát sóng</h2>
+    <h2><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm7 10a7 7 0 0 1-14 0H3a9 9 0 0 0 8 8.94V24h2v-3.06A9 9 0 0 0 21 12h-2z"/></svg> Gửi popup thông báo</h2>
     <div class="broadcast" id="broadcastBox">
-      <span class="live-dot"></span>
+      <span class="bell">
+        <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm6-6V11a6 6 0 0 0-4-5.66V4.5a2 2 0 0 0-4 0v.84A6 6 0 0 0 6 11v5l-1.6 1.6A1 1 0 0 0 5.1 19h13.8a1 1 0 0 0 .7-1.7L18 16z"/></svg>
+      </span>
       <div class="info">
-        <div class="st" id="castState">Chưa phát sóng</div>
-        <div class="nm" id="castName">Bấm nút "Phát" ở một podcast bên dưới để hiện popup trên mọi máy.</div>
+        <div class="st" id="castState">Chưa gửi popup nào</div>
+        <div class="nm" id="castName">Bấm nút ► ở một podcast bên dưới để bật popup một lần trên mọi máy đang mở.</div>
       </div>
-      <button class="btn btn-stopcast" id="stopCast" style="display:none">
-        <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg> Dừng phát sóng
-      </button>
     </div>
   </div>
 
@@ -204,20 +202,22 @@ const toast = (msg, err=false) => {
   clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove("show"), 2600);
 };
 const esc = (s)=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtTime = (ts)=>{
+  if(!ts) return "";
+  const d = new Date(ts);
+  const p = (n)=>String(n).padStart(2,"0");
+  return `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())} · ${p(d.getDate())}/${p(d.getMonth()+1)}`;
+};
 
 function parseVocarooId(raw){
   if(!raw) return null;
   const s = String(raw).trim();
-  // Hỗ trợ đoạn HTML embed đầy đủ: src="https://vocaroo.com/embed/ID?autoplay=0"
   const embedSrc = s.match(/vocaroo\.com\/embed\/([A-Za-z0-9]+)/i);
   if(embedSrc && embedSrc[1]) return embedSrc[1];
-  // Hỗ trợ link voca.ro/ID hoặc href="https://voca.ro/ID"
   const vocaRo = s.match(/voca\.ro\/([A-Za-z0-9]+)/i);
   if(vocaRo && vocaRo[1]) return vocaRo[1];
-  // Hỗ trợ link thường vocaroo.com/ID
   const plain = s.match(/vocaroo\.com\/([A-Za-z0-9]+)/i);
   if(plain && plain[1]) return plain[1];
-  // Nếu chỉ nhập thẳng ID
   if(/^[A-Za-z0-9]{6,}$/.test(s)) return s;
   return null;
 }
@@ -239,41 +239,33 @@ $("addBtn").addEventListener("click", async () => {
 });
 $("linkInput").addEventListener("keydown",e=>{ if(e.key==="Enter") $("addBtn").click(); });
 
-/* ---------- PHÁT SÓNG / DỪNG ---------- */
-async function broadcast(p, key){
+/* ---------- GỬI POPUP (một lần) ----------
+   Ghi một sự kiện broadcast mới với startedAt thay đổi.
+   Mọi máy đang mở sẽ bật popup đúng một lần — KHÔNG tự phát âm thanh.
+   Không có trạng thái "đang phát" nên không cần nút dừng.            */
+async function sendPopup(p, key){
   try{
     await set(ref(db,"broadcast"), {
-      active:true, podcastId:key, name:p.name, embedId:p.embedId,
+      podcastId:key, name:p.name, embedId:p.embedId,
       url:p.url, startedAt: Date.now()
     });
-    toast('Đang phát sóng: "'+p.name+'"');
-  }catch(e){ toast("Lỗi phát sóng: "+e.message, true); }
+    toast('Đã gửi popup: "'+p.name+'"');
+  }catch(e){ toast("Lỗi gửi popup: "+e.message, true); }
 }
-$("stopCast").addEventListener("click", async () => {
-  try{ await set(ref(db,"broadcast"), { active:false, startedAt: Date.now() });
-    toast("Đã dừng phát sóng."); }
-  catch(e){ toast("Lỗi: "+e.message, true); }
-});
 
-/* ---------- LẮNG NGHE TRẠNG THÁI PHÁT SÓNG ---------- */
-let liveKey = null;
+/* ---------- HIỂN THỊ POPUP GẦN NHẤT ĐÃ GỬI ---------- */
 onValue(ref(db,"broadcast"), (snap)=>{
   const b = snap.val();
-  const box=$("broadcastBox"), card=$("castCard");
-  if(b && b.active){
-    liveKey = b.podcastId || null;
-    box.classList.add("live"); card.classList.add("live");
-    $("castState").textContent = "🔴 ĐANG PHÁT SÓNG";
-    $("castName").textContent = "Popup đang hiển thị trên mọi máy · Chủ đề: " + (b.name||"—");
-    $("stopCast").style.display = "inline-flex";
+  const box=$("broadcastBox");
+  if(b && b.startedAt && b.name){
+    box.classList.add("sent");
+    $("castState").textContent = "✅ Đã gửi popup gần nhất";
+    $("castName").textContent = `Chủ đề: ${b.name} · lúc ${fmtTime(b.startedAt)}`;
   }else{
-    liveKey = null;
-    box.classList.remove("live"); card.classList.remove("live");
-    $("castState").textContent = "Chưa phát sóng";
-    $("castName").textContent = 'Bấm nút "Phát" ở một podcast bên dưới để hiện popup trên mọi máy.';
-    $("stopCast").style.display = "none";
+    box.classList.remove("sent");
+    $("castState").textContent = "Chưa gửi popup nào";
+    $("castName").textContent = 'Bấm nút ► ở một podcast bên dưới để bật popup một lần trên mọi máy đang mở.';
   }
-  renderHighlight();
 });
 
 /* ---------- DANH SÁCH ---------- */
@@ -291,45 +283,28 @@ function render(){
   $("count").textContent = items.length + " mục";
   $("empty").style.display = items.length ? "none" : "block";
   list.innerHTML = items.map((p,i)=>`
-    <li data-key="${p.key}" class="${p.key===liveKey?'active':''}">
+    <li data-key="${p.key}">
       <span class="idx">${i+1}</span>
       <div class="meta">
-        <div class="t">${esc(p.name)} ${p.key===liveKey?'<span class="badge-live">LIVE</span>':''}</div>
+        <div class="t">${esc(p.name)}</div>
         <div class="u">vocaroo.com/embed/${esc(p.embedId)}</div>
       </div>
       <div class="item-actions">
-        ${p.key===liveKey
-          ? `<button class="btn btn-stopcast icon-btn" data-act="stop" title="Dừng phát sóng">
-               <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
-             </button>`
-          : `<button class="btn btn-play icon-btn" data-act="play" title="Phát sóng">
-               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-             </button>`
-        }
+        <button class="btn btn-play icon-btn" data-act="play" title="Gửi popup tới mọi máy">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
         <button class="btn btn-del icon-btn" data-act="del" title="Xóa">
           <svg viewBox="0 0 24 24"><path d="M6 7h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm3-4h6l1 2h4v2H4V5h4z"/></svg>
         </button>
       </div>
     </li>`).join("");
 }
-function renderHighlight(){
-  document.querySelectorAll("#list li").forEach(li=>{
-    li.classList.toggle("active", li.dataset.key===liveKey);
-  });
-  // cập nhật badge LIVE nhanh
-  render();
-}
 
 $("list").addEventListener("click", async (e)=>{
   const btn = e.target.closest("[data-act]"); if(!btn) return;
   const li = e.target.closest("li"); const key = li.dataset.key;
   const p = items.find(x=>x.key===key); if(!p) return;
-  if(btn.dataset.act==="play"){ broadcast(p, key); }
-  else if(btn.dataset.act==="stop"){
-    try{ await set(ref(db,"broadcast"), { active:false, startedAt: Date.now() });
-      toast("Đã dừng phát sóng."); }
-    catch(e){ toast("Lỗi: "+e.message, true); }
-  }
+  if(btn.dataset.act==="play"){ sendPopup(p, key); }
   else if(btn.dataset.act==="del"){
     if(!confirm(`Xóa podcast "${p.name}"?`)) return;
     try{ await remove(ref(db,"podcasts/"+key)); toast("Đã xóa."); }
