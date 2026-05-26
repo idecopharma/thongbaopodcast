@@ -22,56 +22,43 @@
   }
   .wrap{max-width:880px;margin:0 auto}
   header{display:flex;align-items:center;gap:14px;margin-bottom:26px}
-  .logo{
-    width:54px;height:54px;border-radius:15px;flex:0 0 auto;
+  .logo{ width:54px;height:54px;border-radius:15px;flex:0 0 auto;
     background:linear-gradient(145deg,var(--gold),var(--gold2));
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 10px 26px rgba(240,169,61,.35);
-  }
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(240,169,61,.35); }
   .logo svg{width:28px;height:28px;fill:#08191d}
   header h1{font-size:22px;font-weight:800;letter-spacing:.3px}
   header p{font-size:13px;color:var(--muted);margin-top:2px}
 
-  .card{
-    background:linear-gradient(165deg,var(--panel),var(--panel2));
-    border:1px solid var(--line2);border-radius:18px;
-    padding:22px;margin-bottom:20px;box-shadow:0 18px 44px rgba(0,0,0,.4);
-  }
-  .card h2{font-size:14px;letter-spacing:1.5px;text-transform:uppercase;
-    color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .card{ background:linear-gradient(165deg,var(--panel),var(--panel2));
+    border:1px solid var(--line2);border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 18px 44px rgba(0,0,0,.4); }
+  .card h2{font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
   .card h2 svg{width:16px;height:16px;fill:var(--gold)}
 
   label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px 2px;font-weight:600}
-  input[type=text]{
-    width:100%;padding:13px 14px;border-radius:11px;font-size:14px;
-    background:#08191d;border:1px solid var(--line2);color:var(--text);
-    outline:none;transition:border .15s,box-shadow .15s;
-  }
+  input[type=text]{ width:100%;padding:13px 14px;border-radius:11px;font-size:14px;
+    background:#08191d;border:1px solid var(--line2);color:var(--text);outline:none;transition:border .15s,box-shadow .15s; }
   input[type=text]:focus{border-color:var(--gold2);box-shadow:0 0 0 3px rgba(240,169,61,.15)}
   input::placeholder{color:#5a7c83}
   .row{display:grid;grid-template-columns:1fr 1.4fr;gap:14px}
   @media(max-width:600px){.row{grid-template-columns:1fr}}
 
-  .btn{
-    border:0;border-radius:11px;cursor:pointer;font-weight:700;
-    font-size:14px;letter-spacing:.3px;padding:13px 18px;
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    transition:transform .12s,filter .15s,background .15s;
-  }
+  .btn{ border:0;border-radius:11px;cursor:pointer;font-weight:700;font-size:14px;letter-spacing:.3px;padding:13px 18px;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s,filter .15s,background .15s; }
   .btn:active{transform:scale(.97)}
   .btn svg{width:16px;height:16px}
-  .btn-gold{background:linear-gradient(145deg,var(--gold),var(--gold2));color:#08191d;fill:#08191d;
-    box-shadow:0 10px 24px rgba(240,169,61,.32);width:100%;margin-top:16px}
+  .btn-gold{background:linear-gradient(145deg,var(--gold),var(--gold2));color:#08191d;fill:#08191d;box-shadow:0 10px 24px rgba(240,169,61,.32);width:100%;margin-top:16px}
   .btn-gold:hover{filter:brightness(1.05)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);fill:var(--text);border:1px solid var(--line2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
   .btn-play{background:rgba(96,205,255,.14);color:#bfe9ff;fill:#bfe9ff;border:1px solid rgba(96,205,255,.35)}
   .btn-play:hover{background:rgba(96,205,255,.24)}
   .btn-del{background:rgba(255,90,82,.12);color:#ffd0cd;fill:#ff8a84;border:1px solid rgba(255,90,82,.35)}
   .btn-del:hover{background:rgba(255,90,82,.22)}
+  .btn-wipe{background:rgba(255,90,82,.16);color:#ffd0cd;fill:#ff8a84;border:1px solid rgba(255,90,82,.5)}
+  .btn-wipe:hover{background:rgba(255,90,82,.26)}
 
   .broadcast{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .bell{width:42px;height:42px;border-radius:12px;flex:0 0 auto;
-    background:rgba(96,205,255,.12);border:1px solid rgba(96,205,255,.3);
-    display:flex;align-items:center;justify-content:center}
+  .bell{width:42px;height:42px;border-radius:12px;flex:0 0 auto;background:rgba(96,205,255,.12);border:1px solid rgba(96,205,255,.3);display:flex;align-items:center;justify-content:center}
   .bell svg{width:20px;height:20px;fill:var(--teal)}
   .broadcast .info{flex:1;min-width:160px}
   .broadcast .info .st{font-size:13px;font-weight:700}
@@ -81,28 +68,26 @@
 
   .count{font-size:12px;color:var(--muted);font-weight:600}
   ul.list{list-style:none;display:flex;flex-direction:column;gap:10px}
-  ul.list li{
-    display:flex;align-items:center;gap:12px;
-    background:#08191d;border:1px solid var(--line2);
-    border-radius:13px;padding:12px 14px;transition:border .15s;
-  }
+  ul.list li{ display:flex;align-items:center;gap:12px;background:#08191d;border:1px solid var(--line2);border-radius:13px;padding:12px 14px;transition:border .15s; }
   ul.list li:hover{border-color:var(--line)}
-  .idx{width:26px;height:26px;border-radius:8px;background:rgba(245,197,107,.12);
-    color:var(--gold);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .idx{width:26px;height:26px;border-radius:8px;background:rgba(245,197,107,.12);color:var(--gold);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   .meta{flex:1;min-width:0}
   .meta .t{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .meta .u{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
   .item-actions{display:flex;gap:8px;flex:0 0 auto}
   .icon-btn{width:38px;height:38px;border-radius:10px;padding:0}
 
+  /* avatar người nghe */
+  .ava{width:30px;height:30px;border-radius:50%;flex:0 0 auto;background:linear-gradient(145deg,var(--teal),#3b9fd6);
+    color:#062028;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;text-transform:uppercase}
+
+  .lbtns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .lbtns .btn{flex:1;min-width:170px}
+
   .empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:13.5px}
-  .toast{
-    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
-    background:#0e2329;border:1px solid var(--line);color:var(--text);
-    padding:12px 20px;border-radius:12px;font-size:13.5px;font-weight:600;
-    box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;
-    transition:opacity .25s,transform .25s;z-index:50;
-  }
+  .toast{ position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+    background:#0e2329;border:1px solid var(--line);color:var(--text);padding:12px 20px;border-radius:12px;font-size:13.5px;font-weight:600;
+    box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50; }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .toast.err{border-color:rgba(255,90,82,.5)}
 </style>
@@ -111,12 +96,10 @@
 <div class="wrap">
 
   <header>
-    <div class="logo">
-      <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm7 10a7 7 0 0 1-14 0H3a9 9 0 0 0 8 8.94V24h2v-3.06A9 9 0 0 0 21 12h-2z"/></svg>
-    </div>
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm7 10a7 7 0 0 1-14 0H3a9 9 0 0 0 8 8.94V24h2v-3.06A9 9 0 0 0 21 12h-2z"/></svg></div>
     <div>
       <h1>Quản trị Podcast Thông Báo</h1>
-      <p>Dán link Vocaroo · tạo danh sách · gửi popup tới mọi máy (kể cả máy vào trễ)</p>
+      <p>Dán link Vocaroo · gửi popup tới mọi máy · theo dõi người đã nghe</p>
     </div>
   </header>
 
@@ -124,13 +107,34 @@
   <div class="card" id="castCard">
     <h2><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm7 10a7 7 0 0 1-14 0H3a9 9 0 0 0 8 8.94V24h2v-3.06A9 9 0 0 0 21 12h-2z"/></svg> Gửi popup thông báo</h2>
     <div class="broadcast" id="broadcastBox">
-      <span class="bell">
-        <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm6-6V11a6 6 0 0 0-4-5.66V4.5a2 2 0 0 0-4 0v.84A6 6 0 0 0 6 11v5l-1.6 1.6A1 1 0 0 0 5.1 19h13.8a1 1 0 0 0 .7-1.7L18 16z"/></svg>
-      </span>
+      <span class="bell"><svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm6-6V11a6 6 0 0 0-4-5.66V4.5a2 2 0 0 0-4 0v.84A6 6 0 0 0 6 11v5l-1.6 1.6A1 1 0 0 0 5.1 19h13.8a1 1 0 0 0 .7-1.7L18 16z"/></svg></span>
       <div class="info">
         <div class="st" id="castState">Chưa gửi popup nào</div>
-        <div class="nm" id="castName">Bấm nút ► ở một podcast bên dưới. Mọi máy đang mở và cả máy vào trễ đều tự bật popup.</div>
+        <div class="nm" id="castName">Bấm ► ở một podcast bên dưới. Mọi máy đang mở và cả máy vào trễ đều tự bật popup.</div>
       </div>
+    </div>
+  </div>
+
+  <!-- DANH SÁCH NGƯỜI ĐÃ NGHE -->
+  <div class="card">
+    <h2 style="justify-content:space-between">
+      <span style="display:inline-flex;align-items:center;gap:8px">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Người đã nghe (popup gần nhất)
+      </span>
+      <span class="count" id="lcount">0 người</span>
+    </h2>
+    <ul class="list" id="listeners"></ul>
+    <div class="empty" id="lempty">Chưa có ai bấm "Đã nghe".</div>
+    <div class="lbtns">
+      <button class="btn btn-ghost" id="clearListBtn">
+        <svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M6 7h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm3-4h6l1 2h4v2H4V5h4z"/></svg>
+        Xóa danh sách đã nghe
+      </button>
+      <button class="btn btn-wipe" id="wipeBtn">
+        <svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M12 2 1 21h22zM12 16a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-1-7h2v5h-2z"/></svg>
+        Xóa mọi dữ liệu (làm lại mới)
+      </button>
     </div>
   </div>
 
@@ -153,7 +157,7 @@
     </button>
   </div>
 
-  <!-- DANH SÁCH -->
+  <!-- DANH SÁCH PODCAST -->
   <div class="card">
     <h2 style="justify-content:space-between">
       <span style="display:inline-flex;align-items:center;gap:8px">
@@ -223,29 +227,25 @@ $("addBtn").addEventListener("click", async () => {
   const id = parseVocarooId(link);
   if(!id) return toast("Link Vocaroo không hợp lệ.", true);
   try{
-    await push(ref(db,"podcasts"), {
-      name, embedId:id, url:link, createdAt: serverTimestamp()
-    });
+    await push(ref(db,"podcasts"), { name, embedId:id, url:link, createdAt: serverTimestamp() });
     $("nameInput").value=""; $("linkInput").value="";
     toast("Đã lưu podcast.");
   }catch(e){ toast("Lỗi lưu: "+e.message, true); }
 });
 $("linkInput").addEventListener("keydown",e=>{ if(e.key==="Enter") $("addBtn").click(); });
 
-/* ---------- GỬI POPUP ----------
-   Ghi một sự kiện broadcast mới với startedAt thay đổi.
-   Mọi máy đang mở + máy vào trễ đều tự bật popup. KHÔNG tự phát tiếng. */
+/* ---------- GỬI POPUP ---------- */
 async function sendPopup(p, key){
   try{
-    await set(ref(db,"broadcast"), {
-      podcastId:key, name:p.name, embedId:p.embedId,
-      url:p.url, startedAt: Date.now()
-    });
+    await set(ref(db,"broadcast"), { podcastId:key, name:p.name, embedId:p.embedId, url:p.url, startedAt: Date.now() });
     toast('Đã gửi popup: "'+p.name+'"');
   }catch(e){ toast("Lỗi gửi popup: "+e.message, true); }
 }
 
-/* ---------- POPUP GẦN NHẤT ---------- */
+/* ---------- THEO DÕI BROADCAST + DANH SÁCH NGƯỜI NGHE ---------- */
+let curStartedAt = null;
+let unsubListeners = null;
+
 onValue(ref(db,"broadcast"), (snap)=>{
   const b = snap.val(), box=$("broadcastBox");
   if(b && b.startedAt && b.name){
@@ -255,11 +255,63 @@ onValue(ref(db,"broadcast"), (snap)=>{
   }else{
     box.classList.remove("sent");
     $("castState").textContent = "Chưa gửi popup nào";
-    $("castName").textContent = 'Bấm nút ► ở một podcast bên dưới. Mọi máy đang mở và cả máy vào trễ đều tự bật popup.';
+    $("castName").textContent = 'Bấm ► ở một podcast bên dưới. Mọi máy đang mở và cả máy vào trễ đều tự bật popup.';
+  }
+
+  // Đổi buổi → gắn lại lắng nghe người nghe của buổi đó
+  const sa = (b && b.startedAt) ? b.startedAt : null;
+  if(sa !== curStartedAt){
+    curStartedAt = sa;
+    if(unsubListeners){ unsubListeners(); unsubListeners = null; }
+    if(sa){
+      unsubListeners = onValue(ref(db,"listeners/"+sa), renderListeners);
+    }else{
+      renderListeners(null);
+    }
   }
 });
 
-/* ---------- DANH SÁCH ---------- */
+function renderListeners(snap){
+  const val = (snap && typeof snap.val === "function") ? (snap.val() || {}) : {};
+  const arr = Object.values(val).sort((a,b)=>(a.at||0)-(b.at||0));
+  $("lcount").textContent = arr.length + " người";
+  $("lempty").style.display = arr.length ? "none" : "block";
+  $("listeners").innerHTML = arr.map((x,i)=>{
+    const nm = x.name || "—";
+    const ini = nm.trim().charAt(0) || "?";
+    return `<li>
+      <span class="ava">${esc(ini)}</span>
+      <div class="meta">
+        <div class="t">${esc(nm)}</div>
+        <div class="u">Đã nghe lúc ${fmtTime(x.at)}</div>
+      </div>
+      <span class="idx">${i+1}</span>
+    </li>`;
+  }).join("");
+}
+
+/* ---------- XÓA DANH SÁCH NGƯỜI NGHE ---------- */
+$("clearListBtn").addEventListener("click", async ()=>{
+  if(!curStartedAt) return toast("Chưa có buổi phát nào.", true);
+  if(!confirm("Xóa toàn bộ danh sách người đã nghe của popup gần nhất?")) return;
+  try{ await remove(ref(db,"listeners/"+curStartedAt)); toast("Đã xóa danh sách đã nghe."); }
+  catch(e){ toast("Lỗi: "+e.message, true); }
+});
+
+/* ---------- XÓA MỌI DỮ LIỆU (làm lại mới) ---------- */
+$("wipeBtn").addEventListener("click", async ()=>{
+  if(!confirm("XÓA MỌI DỮ LIỆU?\n\n• Toàn bộ danh sách podcast\n• Popup đang phát\n• Toàn bộ danh sách người đã nghe\n\nKhông thể hoàn tác.")) return;
+  try{
+    await Promise.all([
+      remove(ref(db,"podcasts")),
+      remove(ref(db,"broadcast")),
+      remove(ref(db,"listeners")),
+    ]);
+    toast("Đã xóa sạch dữ liệu. Bạn có thể thêm podcast mới.");
+  }catch(e){ toast("Lỗi xóa: "+e.message, true); }
+});
+
+/* ---------- DANH SÁCH PODCAST ---------- */
 let items = [];
 onValue(ref(db,"podcasts"), (snap)=>{
   const val = snap.val() || {};
